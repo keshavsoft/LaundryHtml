@@ -1,0 +1,14 @@
+[
+    {
+        "pk": 201,
+        "ItemName": "Saree",
+        "DryWashRate": 100,
+        "Pcs": 200
+    },
+    {
+        "pk": 216,
+        "ItemName": "Chudidar",
+        "DryWashRate": 90,
+        "Pcs": 300
+    }
+]

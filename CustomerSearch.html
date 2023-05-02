@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Booking Customers Barcode</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="/Laundry/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Laundry/css/header.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-xl navbar-dark bg-dark" aria-label="Sixth navbar example" id="NavBarId">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Today</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarsExample06" aria-controls="navbarsExample06" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExample06">
+                    <ul class="navbar-nav me-auto mb-2 mb-xl-0" id="KHeader">
+                        <li class="nav-item Bookings">
+                            <a class="nav-link active" aria-current="page"
+                                href="Cleaning/POS/Booking/Tabs/AddItem/AddItemCommon.html" id="BookingHomeId">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                    class="bi d-block mx-auto mb-1" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z"></path>
+                                    <path
+                                        d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z">
+                                    </path>
+                                    <path
+                                        d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z">
+                                    </path>
+                                </svg>
+                                Bookings
+                            </a>
+                        </li>
+
+                    </ul>
+                    <form role="search" onsubmit="return false;">
+                        <input id="MainHeaderSearchId" class="form-control" type="search" placeholder="Search"
+                            aria-label="Search" list="CustomerDataListId">
+                    </form>
+                    <script>
+                        let jFChangeHeaderActiveClass = () => {
+                            let jVarLocalPathArray = window.location.pathname.split("/");
+                            let jVarLocalHTMLName = jVarLocalPathArray[jVarLocalPathArray.length - 1];
+                            jFChangeNavAnchorClass({ inClassName: jVarLocalHTMLName.split(".")[0] });
+                        };
+
+                        let jFChangeNavAnchorClass = ({ inClassName }) => {
+                            let jVarLocalNavBarId = document.getElementById("NavBarId");
+                            let jVarLocalAnchorNeeded = jVarLocalNavBarId.querySelector(`.${inClassName}AClass`);
+                            if (jVarLocalAnchorNeeded !== null) {
+
+                                if (jVarLocalAnchorNeeded.classList.contains("text-white")) {
+                                    jVarLocalAnchorNeeded.classList.remove("text-white");
+                                };
+
+                                jVarLocalAnchorNeeded.classList.add("text-info");
+                            };
+                        };
+
+                        jFChangeHeaderActiveClass();
+                    </script>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container" id="KCont1">
+            <div class="input-group mt-3 mb-3">
+                <input type="text" class="form-control" placeholder="Scan Qrcode or Search Customer" aria-label="Input"
+                    aria-describedby="GoButtonid" id="ScanId" list="CustomerDataListId" autofocus="">
+                <button class="btn btn-outline-secondary" type="button"
+                    onclick="window.location.href='Cleaning/POS/Booking/Tabs/AddItem/AddItemCommon.html'"
+                    id="GoButtonid">GO</button>
+            </div>
+
+            <datalist id="CustomerDataListId">
+                <option value="Keshav">
+                </option>
+                <option value="9848163021">
+                </option>
+            </datalist>
+
+            <div class="alert alert-danger d-none" role="alert" id="DangerAlertId">
+                A simple danger alert—check it out!
+            </div>
+
+
+            <div class="alert alert-success d-none" role="alert" id="SuccessAlertId">
+                Success!
+            </div>
+
+            <div class="row">
+                <div class="col-6">.</div>
+
+                <div class="col-6 d-grid gap-2 col-6 mx-auto">
+                    <a name="" id="" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#ModalCreateCustomerId" role="button">Create Customer</a>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+
+    <div class="modal" tabindex="-1" id="ModalCreateCustomerId">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Under development.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="AlertWarningId" class="alert alert-warning alert-dismissible fade show" role="alert" style="display:none;">
+        <div id="AlertWarningMessageId"><strong>Sorry!</strong> Data not saved</div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <footer class="footer mt-auto py-2 bg-light fixed-bottom">
+        <div class="container">
+            <div class="bg-light d-flex justify-content-between">
+                <div>KeshavSoft v10.25</div>
+                <div data-BaseString="Last refresh : " id="KLastRefreshDT">Last refresh : </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/Laundry/js/bootstrap.min.js"></script>
+
+    <script src="/Laundry/js/lodash.js"></script>
+
+    <script src="/Laundry/js/handlebars.min-v4.7.7.js"></script>
+
+    <script src="/Laundry/js/HandleBars/HelperFuns.js"></script>
+
+    <!-- <script src="/Laundry/Start.js" type="module"></script> -->
+
+    <script>
+        let jFSearchInputKeyPress = (event) => {
+            if (event.key === 'Enter') { // key code of the keybord key
+                event.preventDefault();
+                let jVarLocalCurrentTarget = event.currentTarget;
+                let jVarLocalClosestCard = jVarLocalCurrentTarget.closest(".card");
+                let jVarLocalTable = jVarLocalClosestCard.querySelector("table");
+
+                // your code to Run
+                LocalSearchTable({ inTable: jVarLocalTable });
+            };
+        };
+
+        let myFunction = () => {
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("SearchQrCodeTable");
+            filter = input.value;
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            console.log("1111111111 : ", input, filter);
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    console.log("222222 : ", td.innerHTML);
+
+                    if (td.innerHTML.indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        };
+
+        function LocalSearchTable({ inTable }) {
+            // Declare variables 
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("SearchQrCodeTable");
+            filter = input.value.toUpperCase();
+            //table = document.getElementById("myTable");
+
+            table = inTable;
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td");
+                for (j = 0; j < td.length; j++) {
+                    let tdata = td[j];
+                    if (tdata) {
+                        if (tdata.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break;
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <script src="./CustomerSearch.js" type="module"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <!-- place navbar here -->
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="MenuId">
+                        <label class="form-check-label" for="MenuId">Menu</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="MainContentTabId">
+                    <div class="row">
+                        <div class="" id="MenuTabId"></div>
+                        <div class="col">
+                            <div class="card border-primary">
+                                <div class="card-body">
+                                    <div class="tab-pane" id="MenItemsTabId" data-category="Men">
+                                        <div class="row mt-3">
+                                            <div class="col-md-1">
+                                                <label for="inputEmail4" class="form-label">Item#</label>
+                                                <input type="text" class="form-control ItemSerialClass">
+
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-floating">
+                                                    <select class="form-select ItemSelect" id="ItemSelectId"
+                                                        aria-label="Floating label select example" name="ItemName"
+                                                        autofocus>
+                                                        <option selected>Open this select menu</option>
+                                                    </select>
+                                                    <label for="ItemSelectId">Select Item</label>
+                                                </div>
+                                            </div>
+                                            <div class="col" id="MenFrequentItems">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-1">
+                                            <div class="col-md-3">
+                                                <div class="form-floating">
+                                                    <select class="form-select WashTypeClass" id="WashSelectId"
+                                                        aria-label="Floating label select example" name="WashType">
+                                                        <option>Open this select menu</option>
+                                                        <option value="1" selected>DryWash</option>
+                                                    </select>
+                                                    <label for="WashSelectId">Select Wash</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-floating">
+                                                    <input type="number" class="form-control PcsClass" value="1"
+                                                        name="Pcs">
+                                                    <label for="PcsId">Pcs</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-floating">
+                                                    <input type="number" class="form-control RateClass" name="Rate">
+                                                    <label for="RateId">Rate</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-success AddItemButtonClass"
+                                                    id="AddItemButtonId">Add
+                                                    Item</button>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input AddOnMenuClass" type="checkbox" role="switch"
+                                                        id="AddOnMenuId">
+                                                    <label class="form-check-label" for="AddOnMenuId">Add-Ons</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                        </div>
+                                        <div class="row">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="collapse" id="ItemsShowCollapseId">
+
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <table class="table" id="ItemsTableId">
+                                                <thead class="table-primary">
+                                                    <tr>
+                                                        <th scope="col" style="width: 5%;">#</th>
+                                                        <th scope="col" style="width: 15%; display: none;">Category</th>
+                                                        <th scope="col" style="width: 20%;">Item Name</th>
+                                                        <th scope="col" style="width: 10%;">Wash</th>
+                                                        <th scope="col" style="width: 5%;" class="text-end">Pcs</th>
+                                                        <th scope="col" style="width: 10%;" class="text-end">Rate</th>
+                                                        <th scope="col" style="width: 10%;" class="text-end">Add-On</th>
+                                                        <th scope="col" style="width: 10%;" class="text-end">Total</th>
+                                                        <th scope="col" style="width: 15%;">Options</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="ItemsTableBodyId">
+                                                </tbody>
+                                                <tfoot id="ItemsTableFootId">
+                                                    <tr class="table-info">
+                                                        <th>#</th>
+                                                        <th style="display: none;"></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th scope="col" style="width: 5%;" class="text-end"
+                                                            id="ItemsTableFootPcs">
+                                                            Pcs</th>
+                                                        <th></th>
+                                                        <th scope="col" style="width: 10%;" class="text-end"
+                                                            id="ItemsTableFootAddOn">Add-On</th>
+                                                        <th scope="col" style="width: 10%;" class="text-end"
+                                                            id="ItemsTableFootTotal">Total</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#AddOnCollapseId"
+                                            role="button" aria-expanded="false" aria-controls="AddOnCollapseId">
+                                            Show Add-Ons
+                                        </a>
+                                    </div>
+                                    <div class="col">
+
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#ImageCollapseId" aria-expanded="false"
+                                            aria-controls="ImageCollapseId">
+                                            Image
+                                        </button>
+                                    </div>
+                                    <div class="col">
+                                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#ItemsShowCollapseId"
+                                            role="button" aria-expanded="false" aria-controls="ItemsShowCollapseId">
+                                            Show Items
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-8">
+
+                                        <div class="collapse" id="AddOnCollapseId">
+
+
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-4">
+                                        <div class="collapse" id="ImageCollapseId">
+                                            <img id="ImageId" src="./Img1.jpg" alt="" height="100px" width="100px">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="d-none" id="MenuTabAddOnId">
+                            <div class="card border-success" id="AddOnCardId">
+                                <div class="card-header">
+
+                                    <div class="row mt-3">
+
+                                        <div class="col-md-2">
+                                            <label for="inputEmail4" class="form-label">Item#</label>
+                                            <input type="number" class="form-control AddOnItemToAddOnClass"
+                                                id="AddOnItemId">
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-floating">
+                                                <select class="form-select text-success" id="AddOnServiceId"
+                                                    aria-label="Floating label select example">
+                                                    <option selected>Open this select menu</option>
+                                                    <option value="1">Stains</option>
+                                                    <option value="2">Heavy Stains</option>
+                                                    <option value="3">Starch</option>
+                                                    <option value="4">Pack</option>
+                                                    <option value="5">Rolling</option>
+                                                    <option value="6">Polishing</option>
+                                                    <option value="7">Pressing</option>
+                                                </select>
+                                                <label for="AddOnServiceId">Add-On Service</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="inputEmail4" class="form-label">Rate</label>
+                                            <input type="number" class="form-control" id="AddOnRateId">
+
+
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="inputEmail4" class="form-label">Image#</label>
+                                            <input type="number" class="form-control" id="AddOnImageId">
+
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-success"
+                                                id="AddOnInsertButtonId">Insert</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="card-body">
+                                    <table class="table" id="AddOnTableId">
+                                        <thead class="table-dark">
+                                            <tr>
+                                                <th scope="col" style="width: 10%;">Item#</th>
+                                                <th scope="col" style="width: 10%;">#</th>
+                                                <th scope="col" style="width: 40%;">Add-On Service</th>
+                                                <th scope="col" style="width: 20%;">Rate</th>
+                                                <th scope="col" style="width: 10%;">Image#</th>
+                                                <th scope="col" style="width: 10%;">Options</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="AddOnTableBodyId">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <template id="TemplateForOrderItemsTableRow">
+            </template>
+
+    </main>
+    <footer>
+        <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+
+    <!--<script>
+
+      //man tab funcs start
+
+        let jFLocalItemSelectFunc = () => {
+            let jVarLocalReturnObject = {};
+            let jVarLocalItemSelectId = document.getElementById("ItemSelectId");
+
+            let jVarLocalItemSelectIdValue = jVarLocalItemSelectId.value;
+            let jVarLocalItemSelectIdName = jVarLocalItemSelectId.name;
+
+
+            jVarLocalReturnObject[jVarLocalItemSelectIdName] = jVarLocalItemSelectIdValue;
+
+            return jVarLocalReturnObject;
+        };
+
+
+
+        let jFLocalPcsFunc = () => {
+            let jVarLocalReturnObject = {};
+            let jVarLocalPcsId = document.getElementById("PcsId");
+
+            let jVarLocalPcsIdValue = jVarLocalPcsId.value;
+            let jVarLocalPcsIdName = jVarLocalPcsId.name;
+
+            jVarLocalReturnObject[jVarLocalPcsIdName] = jVarLocalPcsIdValue;
+            return jVarLocalReturnObject;
+        };
+
+        let jFLocalRateFunc = () => {
+            let jVarLocalReturnObject = {};
+            let jVarLocalRateId = document.getElementById("RateId");
+
+            let jVarLocalRateIdValue = jVarLocalRateId.value;
+            let jVarLocalRateIdName = jVarLocalRateId.name;
+
+            jVarLocalReturnObject[jVarLocalRateIdName] = jVarLocalRateIdValue;
+
+            return jVarLocalReturnObject;
+        };
+
+        let jFLocalAddItemButtonFunc = () => {
+            let jVarLocalAddItemButtonId = document.getElementById("AddItemButtonId");
+            let localItemSelect=jFLocalItemSelectFunc();
+            let localWashSelect=jFLocalWashSelectFunc();
+            let localPcs=jFLocalPcsFunc();
+            let localRate=jFLocalRateFunc();
+
+            let jVarLocalReturnObject = {
+                ...localItemSelect,
+                ...localWashSelect,
+                ...localPcs,
+                ...localRate
+            };
+            
+            return jVarLocalReturnObject;
+        };
+
+        //man tab funcs end
+
+         //Woman tab funcs start
+
+         let jFLocalWomanItemSelectFunc = () => {
+            let jVarLocalReturnObject = {};
+            let jVarLocalWomanItemSelectId = document.getElementById("WomanItemSelectId");
+
+            let jVarLocalWomanItemSelectIdValue = jVarLocalWomanItemSelectId.value;
+            let jVarLocalWomanItemSelectIdName = jVarLocalWomanItemSelectId.name;
+
+
+            jVarLocalReturnObject[jVarLocalWomanItemSelectIdName] = jVarLocalWomanItemSelectIdValue;
+
+            return jVarLocalReturnObject;
+        };
+
+
+        let jFLocalWomanPcsFunc = () => {
+            let jVarLocalReturnObject = {};
+            let jVarLocalWomanPcsId = document.getElementById("WomanPcsId");
+
+            let jVarLocalWomanPcsIdValue = jVarLocalWomanPcsId.value;
+            let jVarLocalWomanPcsIdName = jVarLocalWomanPcsId.name;
+
+            jVarLocalReturnObject[jVarLocalWomanPcsIdName] = jVarLocalWomanPcsIdValue;
+            return jVarLocalReturnObject;
+        };
+
+        let jFLocalWomanRateFunc = () => {
+            let jVarLocalReturnObject = {};
+            let jVarLocalWomanRateId = document.getElementById("WomanRateId");
+
+            let jVarLocalWomanRateIdValue = jVarLocalWomanRateId.value;
+            let jVarLocalWomanRateIdName = jVarLocalWomanRateId.name;
+
+            jVarLocalReturnObject[jVarLocalWomanRateIdName] = jVarLocalWomanRateIdValue;
+
+            return jVarLocalReturnObject;
+        };
+
+        let jFLocalWomanAddItemButtonFunc = () => {
+            let jVarLocalWomanAddItemButtonId = document.getElementById("WomanAddItemButtonId");
+            let localWomanItemSelect=jFLocalWomanItemSelectFunc();
+            let localWomanWashSelect=jFLocalWomanWashSelectFunc();
+            let localWomanPcs=jFLocalWomanPcsFunc();
+            let localWomanRate=jFLocalWomanRateFunc();
+
+            let jVarLocalReturnObject = {
+                ...localWomanItemSelect,
+                ...localWomanWashSelect,
+                ...localWomanPcs,
+                ...localWomanRate
+            };
+            
+            return jVarLocalReturnObject;
+        };
+
+        //Woman tab funcs end
+
+        //Kid's tab funcs start
+
+        let jFLocalKidItemSelectFunc = () => {
+            let jVarLocalReturnObject = {};
+            let jVarLocalKidItemSelectId = document.getElementById("KidItemSelectId");
+
+            let jVarLocalKidItemSelectIdValue = jVarLocalKidItemSelectId.value;
+            let jVarLocalKidItemSelectIdName = jVarLocalKidItemSelectId.name;
+
+
+            jVarLocalReturnObject[jVarLocalKidItemSelectIdName] = jVarLocalKidItemSelectIdValue;
+
+            return jVarLocalReturnObject;
+        };
+
+
+        let jFLocalKidAddItemButtonFunc = () => {
+            let jVarLocalKidAddItemButtonId = document.getElementById("KidAddItemButtonId");
+            let localKidItemSelect=jFLocalKidItemSelectFunc();
+            let localKidWashSelect=jFLocalKidWashSelectFunc();
+            let localKidPcs=jFLocalKidPcsFunc();
+            let localKidRate=jFLocalKidRateFunc();
+
+            let jVarLocalReturnObject = {
+                ...localKidItemSelect,
+                ...localKidWashSelect,
+                ...localKidPcs,
+                ...localKidRate
+            };
+            
+            return jVarLocalReturnObject;
+        };
+
+        //Kid's tab funcs end
+    </script>-->
+    <script src="./AddItem.js" type="module"></script>
+
+    <script>
+
+        //  <div class="col"><input class="btn btn-primary" type="button" value="Shirt">
+        //                                 </div>
+        const jFLocalItemClick = (event) => {
+            console.log('clicked', event.currentTarget.value);
+        };
+
+        const jFLocalCreateButton = ({ inItemName }) => {
+            let jVarLocalItemName = inItemName;
+
+            const k1 = React.createElement("input", {
+                className: "btn btn-primary",
+                type: "button",
+                value: jVarLocalItemName,
+                onClick: jFLocalItemClick
+            }, null);
+
+            return React.createElement("div", {
+                className: "col"
+            }, k1);
+        };
+
+        const k1 = React.createElement("div", {
+            className: "row"
+        }, jFLocalCreateButton({ inItemName: "Shirt" }),
+            jFLocalCreateButton({ inItemName: "Pant" }));
+
+
+
+      //  root.render(jFLocalCreateButton({ inItemName: "Shirt" }), jFLocalCreateButton({ inItemName: "Pant" }));
+
+    </script>
+
+</body>
+
+</html>
