@@ -1,29 +1,35 @@
 // import { StartFunc as StartFuncAddListeners } from "../AddListeners/FrequentItems/ButtonClickFuncs.js";
 import { StartFunc as StartFuncAddListeners } from "../../AddListeners/FrequentItems/ButtonClickFuncs.js";
+import { StartFunc as StartFuncFromLocalStorage } from "../../FromLocalStorage/Items.js";
 
 const StartFunc = () => {
+    let jVarLocalFromLocalStorage = StartFuncFromLocalStorage();
+
     jFMenTab({
-        inLocalStorateKey: "MenItems",
+        inData: jVarLocalFromLocalStorage,
         inHtmlId: "MenFrequentItems"
     });
 
-    jFMenTab({
-        inLocalStorateKey: "WomenItems",
-        inHtmlId: "WomenFrequentItems"
-    });
+    // jFMenTab({
+    //     inLocalStorateKey: "WomenItems",
+    //     inHtmlId: "WomenFrequentItems"
+    // });
 };
 
-const jFMenTab = ({ inLocalStorateKey, inHtmlId }) => {
-    let jVarLocalinLocalStorateKey = inLocalStorateKey;
-    let jVarLocalinHtmlId = inHtmlId;
-
-    let jVarLocalMenItems = localStorage.getItem(jVarLocalinLocalStorateKey);
-    let jVarLocalMenItemsJson = JSON.parse(jVarLocalMenItems);
-
+const jFMenTab = ({ inData, inHtmlId }) => {
+    let jVarLocalMenItemsJson = inData;
     let jVarLocalSorted = jVarLocalMenItemsJson.sort((a, b) => { return b.Pcs - a.Pcs });
 
+    jFLocalDescByWashed({ inDataSorted: jVarLocalSorted, inHtmlId });
+};
+
+const jFLocalDescByWashed = ({ inDataSorted, inHtmlId }) => {
+    let jVarLocalinHtmlId = inHtmlId;
+
+    let jVarLocalSorted = inDataSorted;
+
     const container = document.getElementById(jVarLocalinHtmlId);
-    
+
     if (container === null === false) {
         let jVarLocalRow = document.createElement("div");
         jVarLocalRow.className = "row";
@@ -49,29 +55,15 @@ const jFMenTab = ({ inLocalStorateKey, inHtmlId }) => {
             }));
         };
 
+        if (jVarLocalSorted.length > 3) {
+            jVarLocalRow.appendChild(jFLocalCreateButton({
+                inItemName: jVarLocalSorted[3].ItemName,
+                inItemRate: jVarLocalSorted[3].DryWashRate
+            }));
+        };
+
         container.appendChild(jVarLocalRow);
     };
-};
-
-const jFLocalItemClick = (event) => {
-    let jVarLocalCurrentTarget = event.currentTarget;
-
-    let jVarLocalItemName = jVarLocalCurrentTarget.value;
-    let jVarLocalRate = jVarLocalCurrentTarget.dataset.rate;
-    let jVarClosestTabPane = jVarLocalCurrentTarget.closest(".tab-pane");
-    let jVarHtmlRate = jVarClosestTabPane.querySelector(".RateClass");
-    let jVarLocalAddButton = jVarClosestTabPane.querySelector(".AddItemButtonClass");
-
-    let jVarLocalClosestTabPane = jVarLocalCurrentTarget.closest(".tab-pane");
-    let jVarLocalItemSelectId = jVarLocalClosestTabPane.querySelector("select.ItemSelect");
-
-    selectItemByValue({
-        inHtmlSelect: jVarLocalItemSelectId,
-        inItemName: jVarLocalItemName
-    });
-
-    jVarHtmlRate.value = jVarLocalRate;
-    jVarLocalAddButton.click();
 };
 
 const jFLocalCreateButton = ({ inItemName, inItemRate }) => {
@@ -90,16 +82,6 @@ const jFLocalCreateButton = ({ inItemName, inItemRate }) => {
     jVarLocalCol.appendChild(jVarLocalButton);
 
     return jVarLocalCol;
-};
-
-function selectItemByValue({ inHtmlSelect, inItemName }) {
-    for (var i = 0; i < inHtmlSelect.options.length; i++) {
-        if (inHtmlSelect.options[i].text === inItemName) {
-            inHtmlSelect.selectedIndex = i;
-            // return inHtmlSelect.options[i].value;
-            break;
-        }
-    }
 };
 
 export { StartFunc }

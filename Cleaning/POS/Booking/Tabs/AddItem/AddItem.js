@@ -4,7 +4,6 @@ import { StartFunc as StartFuncAddListeners } from "./AddListeners/StartFunc.js"
 let StartFunc = () => {
     StartFuncFormLoad();
     StartFuncAddListeners();
-    // StartFuncItemButtonClick();
 };
 
 StartFunc();

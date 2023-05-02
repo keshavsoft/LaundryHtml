@@ -1,4 +1,5 @@
 import { StartFunc as StartFuncToDom } from "../../ToDom/ToTable/ToOrderItems.js";
+import { StartFunc as StartFuncPrepareObject } from "./PrepareObject.js";
 
 let StartFuncs = () => {
     jFLocalMenTab();
@@ -20,8 +21,8 @@ let localAddItemButtonFunc = (event) => {
         let jVarLocalCurrentTarget = jVarLocalEvent.currentTarget;
         let jVarClosestTabPane = jVarLocalCurrentTarget.closest(".tab-pane");
 
-        let jVarObjectToInsert = jFLocalPrepareObject({ inTabPane: jVarClosestTabPane });
-
+        let jVarObjectToInsert = StartFuncPrepareObject({ inTabPane: jVarClosestTabPane });
+        console.log("jVarObjectToInsert : ", jVarObjectToInsert);
         jFLocalToLocalStorage({ inObjectToInsert: jVarObjectToInsert });
 
         StartFuncToDom();
@@ -94,6 +95,7 @@ let jFLocalPrepareObject = ({ inTabPane }) => {
         let jVarLocalWashType = jVarClosestTabPane.querySelector(".WashTypeClass");
         let jVarLocalPcs = jVarClosestTabPane.querySelector(".PcsClass");
         let jVarLocalRate = jVarClosestTabPane.querySelector(".RateClass");
+        let jVarLocalItemSerialClass = jVarClosestTabPane.querySelector(".ItemSerialClass");
 
         let jVarLocalCategory = jVarClosestTabPane.dataset.category;
 
@@ -102,8 +104,6 @@ let jFLocalPrepareObject = ({ inTabPane }) => {
 
         let localWashSelectPk = jVarLocalItemSelect.value;
         let localWashSelect = selectItemByValue({ inHtmlSelect: jVarLocalWashType });
-
-        // let localWashSelect = jFLocalFromSelectFunc({ inHtmlSelect: jVarLocalWashType });
 
         let localPcs = jFLocalFromDomAsInt({ inHtmlId: jVarLocalPcs });
         let localRate = jFLocalFromDomAsInt({ inHtmlId: jVarLocalRate });
