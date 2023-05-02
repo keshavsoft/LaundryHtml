@@ -58,14 +58,19 @@
                                             </div>
                                         </div>
                                         <div class="row mt-1">
-                                            <div class="col-md-3">
+                                            <div class="form-floating" style="display: none;">
+                                                <select class="form-select WashTypeClass" id="WashSelectId"
+                                                    aria-label="Floating label select example" name="WashType">
+                                                    <option>Open this select menu</option>
+                                                    <option value="1" selected>DryWash</option>
+                                                </select>
+                                                <label for="WashSelectId">Select Wash</label>
+                                            </div>
+                                       
+                                            <div class="col-md-2">
                                                 <div class="form-floating">
-                                                    <select class="form-select WashTypeClass" id="WashSelectId"
-                                                        aria-label="Floating label select example" name="WashType">
-                                                        <option>Open this select menu</option>
-                                                        <option value="1" selected>DryWash</option>
-                                                    </select>
-                                                    <label for="WashSelectId">Select Wash</label>
+                                                    <input type="number" class="form-control RateClass" name="Rate">
+                                                    <label for="RateId">Rate</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
@@ -77,8 +82,13 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-floating">
-                                                    <input type="number" class="form-control RateClass" name="Rate">
-                                                    <label for="RateId">Rate</label>
+                                                    <select class="form-select FactorySelectClass"
+                                                        aria-label="Floating label select example" name="WashType">
+                                                        <option>Open this select menu</option>
+                                                        <option value="1" selected>GD</option>
+                                                        <option value="2" selected>ANF</option>
+                                                    </select>
+                                                    <label>Select Factory</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
@@ -88,8 +98,8 @@
                                             </div>
                                             <div class="col-2">
                                                 <div class="form-check form-switch">
-                                                    <input class="form-check-input AddOnMenuClass" type="checkbox" role="switch"
-                                                        id="AddOnMenuId">
+                                                    <input class="form-check-input AddOnMenuClass" type="checkbox"
+                                                        role="switch" id="AddOnMenuId">
                                                     <label class="form-check-label" for="AddOnMenuId">Add-Ons</label>
                                                 </div>
                                             </div>
