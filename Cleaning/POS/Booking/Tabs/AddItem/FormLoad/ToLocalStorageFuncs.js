@@ -4,6 +4,7 @@ import { StartFunc as StartFuncAddToLocalStorageItemsInOrder } from "./AddToLoca
 import { StartFunc as StartFuncAddOnData } from "./AddToLocalStorage/AddOnData/Insert.js";
 import { StartFunc as StartFuncPullCustomers } from "./AddToLocalStorage/Customers/PullCustomers.js";
 import { StartFunc as StartFuncItemsToLocalStorage } from "./AddToLocalStorage/Items/ItemsToLocalStorage.js";
+import { StartFunc as StartFuncFactoriesToLocalStorage } from "./AddToLocalStorage/Factories/FactoriesToLocalStorage.js";
 
 let StartFunc = () => {
     StartFuncAddToLocalStorageWashTypesInsert();
@@ -12,6 +13,7 @@ let StartFunc = () => {
     StartFuncAddOnData();
     StartFuncPullCustomers();
     StartFuncItemsToLocalStorage();
+    StartFuncFactoriesToLocalStorage();
 };
 
 export { StartFunc }

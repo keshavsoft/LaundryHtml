@@ -21,6 +21,9 @@ let jFLocalPrepareObject = ({ inTabPane }) => {
         let localPcs = jFLocalFromDomAsInt({ inHtmlId: jVarLocalPcs });
         let localRate = jFLocalFromDomAsInt({ inHtmlId: jVarLocalRate });
         let jVarlocalItemSerial = jFLocalItemSerialClass({ inTabPane });
+        let jVarlocalLocation = jFLocalFactoriesSelect({ inTabPane });
+        let localLocationSelect = selectItemByValue({ inHtmlSelect: jVarlocalLocation.locationID });
+
 
         // let localItemSelectPk = jVarLocalItemSelectObj.ItemSerial;
         // let localWashSelectPk = jVarLocalItemSelectObj.ItemSerial;
@@ -34,6 +37,8 @@ let jFLocalPrepareObject = ({ inTabPane }) => {
             ItemNamePk: jVarLocalItemSelect.ItemSerial,
             WashType: localWashSelect,
             WashTypePk: jVarLocalItemSelect.ItemSerial,
+            locationPk: jVarlocalLocation.location,
+            location: localLocationSelect,
             ...localPcs,
             ...localRate,
             AddOn: "0-0",
@@ -68,6 +73,22 @@ let jFLocalItemSelect = ({ inTabPane }) => {
         let localReturnObject = {
             ItemSerial: jVarLocalItemSerialClass.value,
             ItemSerialID: jVarLocalItemSerialClass
+        };
+
+        return localReturnObject;
+    } catch (error) {
+        console.log("error : ", error);
+    };
+};
+
+let jFLocalFactoriesSelect = ({ inTabPane }) => {
+    try {
+        let jVarClosestTabPane = inTabPane;
+        let jVarLocalFactorySelectClass = jVarClosestTabPane.querySelector(".FactorySelectClass");
+
+        let localReturnObject = {
+            location: jVarLocalFactorySelectClass.value,
+            locationID: jVarLocalFactorySelectClass
         };
 
         return localReturnObject;
