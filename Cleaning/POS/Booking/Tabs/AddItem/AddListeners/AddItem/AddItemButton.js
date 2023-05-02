@@ -22,7 +22,6 @@ let localAddItemButtonFunc = (event) => {
         let jVarClosestTabPane = jVarLocalCurrentTarget.closest(".tab-pane");
 
         let jVarObjectToInsert = StartFuncPrepareObject({ inTabPane: jVarClosestTabPane });
-        console.log("jVarObjectToInsert : ", jVarObjectToInsert);
         jFLocalToLocalStorage({ inObjectToInsert: jVarObjectToInsert });
 
         StartFuncToDom();
