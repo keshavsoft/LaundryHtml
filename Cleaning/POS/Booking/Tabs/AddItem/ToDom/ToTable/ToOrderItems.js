@@ -2,7 +2,6 @@ import { StartFunc as StartFuncToAddOns } from "./ToAddOns.js";
 import { StartFunc as StartFuncToRow } from "./ToRow/ToOrderItems.js";
 import { StartFunc as StartFuncToItemSerialButton } from "./AddListenersRunTime/ToItemSerialButton.js";
 import { StartFunc as StartFuncFromLocalStorage } from "../../FromLocalStorage/ItemsInOrder.js";
-import { StartFunc as StartFuncFromAddOnsAll } from "../../FromLocalStorage/FromAddOnsAll.js";
 import { StartFunc as StartFuncShowTotals } from "./ToFooter/ShowTotals.js";
 import { StartFunc as StartFuncToFactories } from "./ToRow/ToFactories.js";
 import { StartFunc as StartFuncToDeliveryDateTime } from "./ToRow/ToDeliveryDateTime.js";
@@ -53,11 +52,8 @@ let ShowOnDom = ({ inJsonData }) => {
         }
     );
 
-    //jFLocalShowTotals({ inJsonData: Object.values(jVarLocaljVarLocalItemsInOrderJson) });
     StartFuncShowTotals({ inJsonData: Object.values(jVarLocaljVarLocalItemsInOrderJson) });
 };
-
-
 
 let jFLocalItemsInsertRowFromTemplate = ({ inRowPk, inTableBodyId, inCategory, inItemName, inItemNamePk, inWashType, inWashTypePk, inPcs, inItemRate, inAddOn, inTotal, inlocation, inlocationPk, inDeliveryDateTime }) => {
     var table = inTableBodyId;
@@ -109,7 +105,6 @@ let jFLocalItemsInsertRowFromTemplate = ({ inRowPk, inTableBodyId, inCategory, i
     StartFuncToDeliveryDateTime({ inDeliveryDateTime, inClonedTemplateRow: clone });
 
     StartFuncToRow({ inItemSerial: inRowPk, inClonedTemplateRow: clone });
-
 
     table.appendChild(clone);
 };
