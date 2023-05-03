@@ -1,5 +1,6 @@
 import { StartFunc as StartFuncToDom } from "../../ToDom/ToTable/ToOrderItems.js";
 import { StartFunc as StartFuncPrepareObject } from "./PrepareObject.js";
+import { StartFunc as StartFuncToOrderItemsHtml } from "../../ToLocalStorage/PrepareForOrderItemsTable.js";
 
 let StartFuncs = () => {
     jFLocalMenTab();
@@ -24,7 +25,9 @@ let localAddItemButtonFunc = (event) => {
         let jVarObjectToInsert = StartFuncPrepareObject({ inTabPane: jVarClosestTabPane });
         jFLocalToLocalStorage({ inObjectToInsert: jVarObjectToInsert });
 
+        StartFuncToOrderItemsHtml();
         StartFuncToDom();
+
         jFLocalPostItemInsertFunc({ inTabPane: jVarClosestTabPane });
 
     } catch (error) {
