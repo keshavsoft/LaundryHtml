@@ -4,7 +4,7 @@ let StartFunc = ({ inlocation,inlocationPk, inClonedTemplateRow }) => {
     jVarLocalOrderItemsOrderItemsItemNameClass.dataset.pk = inlocationPk;
     jVarLocalOrderItemsOrderItemsItemNameClass.innerHTML = inlocation;
 
-
+    // OrderItemsFactoryClass:OrderItemsFactoryClass
 };
 
 export { StartFunc };

@@ -5,6 +5,7 @@ import { StartFunc as StartFuncFromLocalStorage } from "../../FromLocalStorage/I
 import { StartFunc as StartFuncFromAddOnsAll } from "../../FromLocalStorage/FromAddOnsAll.js";
 import { StartFunc as StartFuncShowTotals } from "./ToFooter/ShowTotals.js";
 import { StartFunc as StartFuncToFactories } from "./ToRow/ToFactories.js";
+import { StartFunc as StartFuncToDeliveryDateTime } from "./ToRow/ToDeliveryDateTime.js";
 
 let jVarCommonTableBodyId = "ItemsTableBodyId";
 
@@ -46,7 +47,8 @@ let ShowOnDom = ({ inJsonData }) => {
                 inAddOn: element.AddOn,
                 inTotal: element.Total,
                 inlocation: element.location,
-                inlocationPk: element.locationPk
+                inlocationPk: element.locationPk,
+                inDeliveryDateTime: element.DeliveryDateTime
             });
         }
     );
@@ -57,7 +59,7 @@ let ShowOnDom = ({ inJsonData }) => {
 
 
 
-let jFLocalItemsInsertRowFromTemplate = ({ inRowPk, inTableBodyId, inCategory, inItemName, inItemNamePk, inWashType, inWashTypePk, inPcs, inItemRate, inAddOn, inTotal, inlocation, inlocationPk }) => {
+let jFLocalItemsInsertRowFromTemplate = ({ inRowPk, inTableBodyId, inCategory, inItemName, inItemNamePk, inWashType, inWashTypePk, inPcs, inItemRate, inAddOn, inTotal, inlocation, inlocationPk, inDeliveryDateTime }) => {
     var table = inTableBodyId;
     let jVarLocalTemplateForOrderItemsTableRow = document.getElementById("TemplateForOrderItemsTableRow");
     // let jVarLocalAddOnData = StartFuncFromAddOns({ inItemSerial: inRowPk });
@@ -103,7 +105,9 @@ let jFLocalItemsInsertRowFromTemplate = ({ inRowPk, inTableBodyId, inCategory, i
     let jVarLocalOrderItemsOrderItemsEditButtonClass = clone.querySelector(".OrderItemsEditButtonClass");
     jVarLocalOrderItemsOrderItemsEditButtonClass.addEventListener("click", jFLocalItemEditButtonClickFunc);
 
-    StartFuncToFactories({ inlocation, inlocationPk, inClonedTemplateRow: clone })
+    StartFuncToFactories({ inlocation, inlocationPk, inClonedTemplateRow: clone });
+    StartFuncToDeliveryDateTime({ inDeliveryDateTime, inClonedTemplateRow: clone });
+
     StartFuncToRow({ inItemSerial: inRowPk, inClonedTemplateRow: clone });
 
 

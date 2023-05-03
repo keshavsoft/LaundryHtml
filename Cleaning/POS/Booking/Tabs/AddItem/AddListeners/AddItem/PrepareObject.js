@@ -23,12 +23,7 @@ let jFLocalPrepareObject = ({ inTabPane }) => {
         let jVarlocalItemSerial = jFLocalItemSerialClass({ inTabPane });
         let jVarlocalLocation = jFLocalFactoriesSelect({ inTabPane });
         let localLocationSelect = selectItemByValue({ inHtmlSelect: jVarlocalLocation.locationID });
-
-
-        // let localItemSelectPk = jVarLocalItemSelectObj.ItemSerial;
-        // let localWashSelectPk = jVarLocalItemSelectObj.ItemSerial;
-
-
+        let jVarLocalDeliveryDateTime = jFLocalDeliveryDateTimeClass({ inTabPane });
 
         let localReturnObject = {
             ItemSerial: jVarlocalItemSerial.ItemSerial,
@@ -42,6 +37,7 @@ let jFLocalPrepareObject = ({ inTabPane }) => {
             ...localPcs,
             ...localRate,
             AddOn: "0-0",
+            DeliveryDateTime: jVarLocalDeliveryDateTime.DeliveryDateTime,
             Total: Object.values(localPcs)[0] * Object.values(localRate)[0]
         };
 
@@ -65,6 +61,7 @@ let jFLocalItemSerialClass = ({ inTabPane }) => {
         console.log("error : ", error);
     };
 };
+
 let jFLocalItemSelect = ({ inTabPane }) => {
     try {
         let jVarClosestTabPane = inTabPane;
@@ -114,6 +111,21 @@ function selectItemByValue({ inHtmlSelect }) {
             return inHtmlSelect.options[i].text;
         }
     }
+};
+
+let jFLocalDeliveryDateTimeClass = ({ inTabPane }) => {
+    try {
+        let jVarClosestTabPane = inTabPane;
+        let jVarLocalItemSerialClass = jVarClosestTabPane.querySelector(".DeliveryDateTimeClass");
+
+        let localReturnObject = {
+            DeliveryDateTime: jVarLocalItemSerialClass.value
+        };
+
+        return localReturnObject;
+    } catch (error) {
+        console.log("error : ", error);
+    };
 };
 
 //Kid's tab funcs end
