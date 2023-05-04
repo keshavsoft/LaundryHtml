@@ -26,33 +26,50 @@
 
         document.getElementById("file").addEventListener("change", function (evt) {
             // remove content
-            $result.innerHTML="";
+            $result.innerHTML = "";
             // be sure to show the results
             document.getElementById("result_block").classList.remove("hidden");
             document.getElementById("result_block").classList.add("show");
 
             // Closure to capture the file information.
             function handleFile(f) {
-                var $title = $("<h4>", {
-                    text: f.name
-                });
-                var $fileContent = $("<ul>");
-                $result.append($title);
-                $result.append($fileContent);
+                var $title = document.createElement("h4");
+                $title.innerHTML = f.name;
+
+                // var $title = $("<h4>", {
+                //     text: f.name
+                // });
+
+                // var $fileContent = $("<ul>");
+                var $fileContent = document.createElement("ul");
+
+                $result.appendChild($title);
+                $result.appendChild($fileContent);
 
                 var dateBefore = new Date();
                 JSZip.loadAsync(f)                                   // 1) read the Blob
                     .then(function (zip) {
                         var dateAfter = new Date();
-                        $title.append($("<span>", {
-                            "class": "small",
-                            text: " (loaded in " + (dateAfter - dateBefore) + "ms)"
-                        }));
+
+                        let jVarLocalSpan = document.createElement("span");
+                        jVarLocalSpan.classList.add("small");
+                        jVarLocalSpan.innerHTML = " (loaded in " + (dateAfter - dateBefore) + "ms)";
+                        $title.appendChild(jVarLocalSpan);
+
+                        // $title.append($("<span>", {
+                        //     "class": "small",
+                        //     text: " (loaded in " + (dateAfter - dateBefore) + "ms)"
+                        // }));
 
                         zip.forEach(function (relativePath, zipEntry) {  // 2) print entries
-                            $fileContent.append($("<li>", {
-                                text: zipEntry.name
-                            }));
+                            console.log("zipEntry : ", zipEntry);
+                            let jVarLocalLi = document.createElement("li");
+                            jVarLocalLi.innerHTML = zipEntry.name;
+                            $fileContent.appendChild(jVarLocalLi);
+
+                            // $fileContent.append($("<li>", {
+                            //     text: zipEntry.name
+                            // }));
                         });
                     }, function (e) {
                         $result.append($("<div>", {
