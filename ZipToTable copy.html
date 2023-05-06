@@ -91,38 +91,6 @@
             inLoopIndex += 1;
         };
 
-        const jFLocalhandleFile = (f) => {
-            var $title = document.getElementById("FileNameId");
-            $title.innerHTML = f.name;
-
-            JSZip.loadAsync(f)
-                .then(jFLocalloadAsyncThen, jFLocalloadAsyncThen2ndFunc);
-        };
-
-        const jFLocalloadAsyncThen = (zip) => {
-            var $title = document.getElementById("FileNameId");
-            var dateAfter = new Date();
-            let jVarLoopIndex = 0;
-            let jVarLocalSpan = document.createElement("span");
-            jVarLocalSpan.classList.add("small");
-            // jVarLocalSpan.innerHTML = " (loaded in " + (dateAfter - dateBefore) + "ms)";
-            $title.appendChild(jVarLocalSpan);
-
-            zip.forEach(function (relativePath, zipEntry) {  // 2) print entries
-                jFLocalToTable(relativePath, zipEntry, jVarLoopIndex);
-                jVarLoopIndex += 1;
-            });
-        };
-
-        const jFLocalloadAsyncThen2ndFunc = (e) => {
-            let jVarLocalLi = document.createElement("tr");
-            let jVarLocalTd1 = document.createElement("td");
-            jVarLocalTd1.innerHTML = "Error reading " + f.name + ": " + e.message;
-            jVarLocalLi.appendChild(jVarLocalTd1);
-
-            $result.appendChild(jVarLocalLi);
-        };
-
         document.getElementById("file").addEventListener("change", function (evt) {
             // remove content
             $result.innerHTML = "";
@@ -130,9 +98,60 @@
             document.getElementById("result_block").classList.remove("hidden");
             document.getElementById("result_block").classList.add("show");
 
+            // Closure to capture the file information.
+            function handleFile(f) {
+                var $title = document.getElementById("FileNameId");
+                $title.innerHTML = f.name;
+
+                var $fileContent = document.createElement("tbody");
+
+                // $result.appendChild($fileContent);
+
+                var dateBefore = new Date();
+                JSZip.loadAsync(f)
+                    .then(function (zip) {
+                        var dateAfter = new Date();
+                        let jVarLoopIndex = 0;
+                        let jVarLocalSpan = document.createElement("span");
+                        jVarLocalSpan.classList.add("small");
+                        jVarLocalSpan.innerHTML = " (loaded in " + (dateAfter - dateBefore) + "ms)";
+                        $title.appendChild(jVarLocalSpan);
+
+                        zip.forEach(function (relativePath, zipEntry) {  // 2) print entries
+                            jFLocalToTable(relativePath, zipEntry, jVarLoopIndex);
+                            console.log("zipEntry : ", zipEntry, relativePath);
+                            // let jVarLocalLi = document.createElement("tr");
+                            // let jVarLocalTd1 = document.createElement("td");
+                            // jVarLocalTd1.innerHTML = jVarLoopIndex;
+                            // jVarLocalLi.appendChild(jVarLocalTd1);
+
+                            // let jVarLocalTd = document.createElement("td");
+                            // jVarLocalTd.innerHTML = zipEntry.name;
+                            // jVarLocalLi.appendChild(jVarLocalTd);
+                            // $result.appendChild(jVarLocalLi);
+                            jVarLoopIndex += 1;
+
+
+
+                        });
+                    }, function (e) {
+                        let jVarLocalLi = document.createElement("tr");
+                        let jVarLocalTd1 = document.createElement("td");
+                        jVarLocalTd1.innerHTML = "Error reading " + f.name + ": " + e.message;
+                        jVarLocalLi.appendChild(jVarLocalTd1);
+
+                        $result.appendChild(jVarLocalLi);
+
+                        // $result.append($("<div>", {
+                        //     "class": "alert alert-danger",
+                        //     text: "Error reading " + f.name + ": " + e.message
+                        // }));
+                    });
+            }
+
             var files = evt.target.files;
             for (var i = 0; i < files.length; i++) {
-                jFLocalhandleFile(files[i]);
+                handleFile(files[i]);
             }
         });
     </script>
